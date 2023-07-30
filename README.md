@@ -4,7 +4,7 @@
 ### this project has been made to give a detailed analysis of cars in the market currently. To help customers by providing them a approximate price of their inteded car or car with their required features
 ## Instructions To Use:
 1) clone this repository into your project folder
-2) Install the following dependencies if you do not already have them
+2) Install the following dependencies if you do not already have them (installation: pip install "module name")
     - Pandas 
     - Matplotlib
     - scipy

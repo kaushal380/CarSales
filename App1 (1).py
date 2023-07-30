@@ -1,3 +1,5 @@
+
+# importing the required modules
 import tkinter as tk
 from tkinter import ttk
 import pandas as pd
@@ -8,13 +10,13 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from HorsePowerAnalysis import predictHorsePower
 import numpy as np
 import matplotlib.pyplot as plt
-
 from powerPerf import PowerPerfAnalysis
 
+# Container class to hold the multiple page
 class MultiPageApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
+        ## title of the page
         self.title("Car Sales interactive dashboard")
         
 
@@ -24,16 +26,20 @@ class MultiPageApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.pages = {}
-        for PageClass in (HomePage, InputPage1, InputPage2, InputPage3):
+        for PageClass in (HomePage, InputPage1, InputPage2, InputPage3): # creating a loop to create a pageclass for every page
             page = PageClass(container, self)
             self.pages[PageClass] = page
             page.grid(row=0, column=0, sticky="nsew")
 
-        self.show_page(HomePage)
+        self.show_page(HomePage) # defaults to show the home page
 
     def show_page(self, page_class):
         page = self.pages[page_class]
         page.tkraise()
+
+
+
+## Creating the home page which consists of dashboard of top cars and expensive cars
 
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
@@ -62,7 +68,7 @@ class HomePage(tk.Frame):
         label1 = tk.Label(topCarsDashboard, text="Top 10 cars being sold in the market", font=("Courier", 18))
         label1.pack()
 
-        # Create a list of items
+        # Create a list of items from the data analysis
         items = dataAnalyze.getTopSoldData() 
         x = 1
         for i in items:
@@ -72,10 +78,10 @@ class HomePage(tk.Frame):
         
         expensiveCarsDashboard = ttk.Frame(self, border=10, padding=10)
         expensiveCarsDashboard.pack()
-        label1 = tk.Label(expensiveCarsDashboard, text="Top 10 most expensive cars", font=("Courier", 18))
+        label1 = tk.Label(expensiveCarsDashboard, text="Top most expensive cars", font=("Courier", 18))
         label1.pack()
 
-        # Create a list of items
+        # Create a list of items from the data analysis
         items = dataAnalyze.getTopExpensiveData()
         x = 1
         for i in items:
@@ -85,7 +91,7 @@ class HomePage(tk.Frame):
         
 
 
-
+## creating the car sorting feature page
 
 class InputPage1(tk.Frame):
     def __init__(self, parent, controller):
@@ -354,45 +360,6 @@ class InputPage2(tk.Frame):
         ttk.Label(self, text="Approximate Price ", font=("Courier", 14)).pack(pady=4)
         selected_label4 = ttk.Label(self, textvariable=finalPrice)
         selected_label4.pack(pady=10)
-
-
-
-# def create_graph(selected_option,self):
-#        # Clear the existing graph, if any   
-
-#     # Generate some example data for the graph
-#     x = np.linspace(45, 90, 10)
-#     if selected_option == "Power/Price":    
-#         y = np.sin(x)
-#     elif selected_option == "Resale-value/Price":
-    
-#         y = np.cos(x)
-#     elif selected_option == "Power perf/Price":
-        
-#         y = np.sin(x) + np.cos(x)
-#     else:
-#         y = x
-
-#     # Create the plot
-#     plt.plot(x, y)
-#     plt.xlabel('X-axis')
-#     plt.ylabel('Y-axis')
-#     plt.title(f"Graph for {selected_option}")
-
-    #plt.show()
-
-    # fig =plt.Figure(figsize=(5, 5),dpi=100)
-    
-    # a=fig.add_subplot(211)
-    # a.plot(x,y)
-    # canvas = FigureCanvasTkAgg(fig, master=self)
-    # canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
-    # # Update the canvas with the new plot
-    # canvas.draw()
-    
-    # canvas._tkcanvas.pack()
-#    canvas.get_tk_widget.pack()
 
 
 
