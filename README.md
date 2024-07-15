@@ -1,4 +1,4 @@
-# CarSales
+# Car Sale Predictions
 
 ## Thank you for visiting this repository! Welcome
 ### This project has been made to give a detailed analysis of cars in the market currently. To help customers by providing them a approximate price of their inteded car or car with their required features
