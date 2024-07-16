@@ -13,4 +13,7 @@
 5) Change the path names to the relative path of the Car_Sales.csv if the pathError comes up. (this step is mostly not needed)
 6) Navigate through different classes and modules just to see how each of them are functioning and to know their role
 
+## Features
+
+
 ## THANK YOU!
